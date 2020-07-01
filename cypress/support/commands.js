@@ -27,17 +27,15 @@
 
 Cypress.Commands.add('verificaDesbloqueio',
  (codigo, classe) => {
-    cy.get('#global_nav_courses_link').click()
+    cy.get('#global_nav_courses_link').click().wait(2500).then(() => {
+      cy.get('a').contains('Todos os Cursos').click()
 
-    cy.wait(5000)
+      cy.contains(codigo).click({force: true})
 
-    cy.get('a').contains('Todos os Cursos').click()
+      cy.get(classe).click()
 
-    cy.contains(codigo).click({force: true})
-
-    cy.get(classe).click()
-
-    cy.get('span').contains('Plano de Ensino').should('be.visible')
+      cy.get('span').contains('Plano de Ensino').should('be.visible')
+    })
  }) 
 
  Cypress.Commands.add('login', () => {

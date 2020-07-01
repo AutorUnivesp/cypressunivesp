@@ -15,9 +15,14 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   'SAA001', 'LIN101', 'SPE001', 'LET100', 'MMB002', 'INT100']
 
 describe("Teste de verificação das páginas das semanas", () => {
-    it("Deve logar com usuário válido", () => {
-        cy.login().then(res => {
-            disciplinas.map(disciplina => cy.verificaDesbloqueio(disciplina, '.semana-4'))
+    beforeEach(() => {
+        cy.login()
+    })
+
+    disciplinas.map(disciplina => {
+        it(`Deve verificar desbloqueio da disciplina ${disciplina}`, () => {
+            cy.verificaDesbloqueio(disciplina, '.semana-4')
         })
     })
+    
 })
