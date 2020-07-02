@@ -27,7 +27,7 @@
 
 Cypress.Commands.add('verificaDesbloqueio',
  (codigo, classe) => {
-    cy.get('#global_nav_courses_link').click().wait(2500).then(() => {
+    cy.get('#global_nav_courses_link').click().wait(3000).then(() => {
       cy.get('a').contains('Todos os Cursos').click()
 
       cy.contains(codigo).click({force: true})
