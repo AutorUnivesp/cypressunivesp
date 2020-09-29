@@ -36,7 +36,7 @@ Cypress.Commands.add('verificaDesbloqueio',
 
       cy.get('span').contains('Plano de Ensino').should('be.visible')
     })
- }) 
+ })
 
  Cypress.Commands.add('login', () => {
    // visitando o site de login da univesp
@@ -54,9 +54,8 @@ Cypress.Commands.add('verificaDesbloqueio',
    // Clica no botão "enviar"
    cy.get('.btn-red').contains('Enviar').click()
 
-   cy.request('POST', 'https://cursos.univesp.br/login/saml', 
+   cy.request('POST', 'https://cursos.univesp.br/login/saml',
    { username: Cypress.env('USERNAME'),
        password: Cypress.env('PASSWORD')
    })
  })
-            
